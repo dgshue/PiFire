@@ -22,3 +22,4 @@ test-working.json
 *.code-workspace
 
 test.json
+.history

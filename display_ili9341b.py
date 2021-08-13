@@ -35,9 +35,10 @@ class Display:
 		# Set Display Width and Height.  Modify for your needs.   
 		self.WIDTH = 320
 		self.HEIGHT = 240
+		self.ROTATION = 2 # An integer value of 0 (default), 1, 2 or 3 only, where 0 is no rotation, 1 is rotate 90° clockwise, 2 is 180° rotation and 3 represents 270° rotation.
 		# Init Device
 		self.serial = spi(port=0, device=0, gpio_DC=24, gpio_RST=25)
-		self.device = ili9341(self.serial, active_low=False, width=self.WIDTH, height=self.HEIGHT, gpio_LIGHT=5)
+		self.device = ili9341(self.serial, active_low=False, width=self.WIDTH, height=self.HEIGHT, rotate=self.ROTATION gpio_LIGHT=5)
 		# Init GPIO for button input, setup callbacks: Uncomment to utilize GPIO input
 		self.up = 16 	# UP - GPIO16
 		self.down = 20	# DOWN - GPIO20
