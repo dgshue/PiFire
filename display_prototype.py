@@ -14,17 +14,19 @@
 
 class Display:
 
-	def __init__(self):
-		self.DisplaySplash()
+	def __init__(self, buttonslevel='HIGH', rotation=0, units='F'):
+		self.display_splash()
+		self.units = units 
 
-	def DisplayStatus(self, in_data, status_data):
+	def display_status(self, in_data, status_data):
+		units = status_data['units']
 		print('====[Display]=====')
-		print('* Grill Temp: ' + str(in_data['GrillTemp'])[:5] + 'F')
-		print('* Grill SetPoint: ' + str(in_data['GrillSetPoint']) + 'F')
-		print('* Probe1 Temp: ' + str(in_data['Probe1Temp'])[:5] + 'F')
-		print('* Probe1 SetPoint: ' + str(in_data['Probe1SetPoint']) + 'F')
-		print('* Probe2 Temp: ' + str(in_data['Probe2Temp'])[:5] + 'F')
-		print('* Probe2 SetPoint: ' + str(in_data['Probe2SetPoint']) + 'F')
+		print('* Grill Temp: ' + str(in_data['GrillTemp'])[:5] + units)
+		print('* Grill SetPoint: ' + str(in_data['GrillSetPoint']) + units)
+		print('* Probe1 Temp: ' + str(in_data['Probe1Temp'])[:5] + units)
+		print('* Probe1 SetPoint: ' + str(in_data['Probe1SetPoint']) + units)
+		print('* Probe2 Temp: ' + str(in_data['Probe2Temp'])[:5] + units)
+		print('* Probe2 SetPoint: ' + str(in_data['Probe2SetPoint']) + units)
 		print('* Mode: ' + str(status_data['mode']))
 		notification = False 
 		for item in status_data['notify_req']:
@@ -37,7 +39,7 @@ class Display:
 				print('* ' + str(item) + ' ON')
 		print('==================')
 
-	def DisplaySplash(self):
+	def display_splash(self):
 		print('  (        (')
 		print('  )\ )     )\ )')
 		print(' (()/( (  (()/(  (   (      (')
@@ -47,13 +49,13 @@ class Display:
 		print(' |  _/ | || __|  | || \'_|/ -_)  ')
 		print(' |_|   |_||_|    |_||_|  \___|  ')
 
-	def ClearDisplay(self):
+	def clear_display(self):
 		print('[Display] Clear Display Command Sent')
 
-	def DisplayText(self, text):
+	def display_text(self, text):
 		print('====[Display]=====')
 		print('* Text: ' + str(text))
 		print('==================')
 
-	def EventDetect(self):
-		return()
+	def display_network(self):
+		pass

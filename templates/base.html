@@ -58,13 +58,39 @@
 						</li>
 					</ul>
 				</div>
-
 		</nav>
-		<br>
 
-        <div class="container theme-showcase" role="main">
-		{% block notify %} {% endblock %}<br>
-		{% block content %} {% endblock %}<br>
+		{% block timer_bar %}
+		<nav class="navbar navbar-light bg-light justify-content-center" id="timer_bar" style="display:none">
+			<div class="btn-group shadow" id="timer_btn_grp">
+				<button type="button" class="btn btn-warning"><i class="fas fa-stopwatch"></i>&nbsp; <i id="timer_time_remaining">--:--:--</i></button>
+				<button type="button" data-toggle="tooltip" title="Start the timer" class="btn btn-outline-success border-warning" id="timer_start"><i class="fas fa-play-circle"></i></button>
+				<button type="button" data-toggle="tooltip" title="Pause the timer" class="btn btn-outline-warning" id="timer_pause"><i class="fas fa-pause-circle"></i></button>
+				<button type="button" data-toggle="tooltip" title="Stop the timer" class="btn btn-outline-danger border-warning" id="timer_stop"><i class="fas fa-stop-circle"></i></button>
+			</div>
+			&nbsp;
+			<button type="button" data-toggle="tooltip" title="Hide the timer" class="btn btn-light btn-sm" id="timer_hide"><i class="far fa-eye-slash"></i></button>
+		</nav>
+		{% endblock %}
+
+		<div class="container theme-showcase" role="main">
+
+		{% block notify %}
+			<!-- Begin Error Notification Section -->
+			{% if errors != [] %}
+				<br>
+				{% for error in errors %}
+					<div class="alert alert-danger alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<b><i class="fas fa-exclamation-triangle"></i>&nbsp; ERROR:</b> <i>{{ error }}</i>
+					</div>
+				{% endfor %}
+			{% endif %}
+			<!-- End Error Notification Section -->
+		{% endblock %}
+
+		{% block content %} {% endblock %}
+		<br>
 		</div>
 		{% block postcontainer %}{% endblock %}
 
@@ -75,7 +101,10 @@
         <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
         <!-- Font Awesome -->
         <script src="{{ url_for('static', filename='js/all.js') }}"></script>
-        {% block scripts %} {% endblock %}
+		<!-- Timer -->
+        <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+
+		{% block scripts %} {% endblock %}
 
     </body>
 </html>

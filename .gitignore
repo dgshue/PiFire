@@ -1,4 +1,6 @@
 
+generated/
+
 *.pyc
 
 control.err.log
@@ -19,6 +21,19 @@ test-working.json
 
 .vscode/
 
+.idea/
+
+venv/
+
 *.code-workspace
 
 test.json
+
+*.bak
+
+*.bak2
+
+pelletdb.json
+
+static/js/backups/
+
